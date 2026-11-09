@@ -197,7 +197,8 @@ connectors. Each is 300 mm long, with tinned ends that you can cut to length.
 The Rapid Integration Kit's two motors are the Pololu #4885 used in this guide, with MC1's connectors
 already fitted, so there is nothing to do here. Fit them in [step 5](#step-5-fit-the-motors), and use
 the settings in [step 14](#step-14-configure-mc1-for-frindo) as they are. The kit also includes the
-USB-C pigtail cable that powers the Raspberry Pi in step 15.
+USB-C pigtail cable that powers the Raspberry Pi in step 15. It does not include MC1, so order that
+separately.
 
 ---
 

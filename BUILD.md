@@ -19,51 +19,37 @@ up the software and get the robot driving.
 
 ## Parts to print
 
-The robot in this guide takes about 7½ hours to print, using roughly 280 g of PLA. The STL files are
-in [`3D files`](3D%20files), with ready-made print sets in each folder's `.3mf` file.
+Print time is about 8 hours for everything below, using roughly 310 g of PLA. The main components
+take about 6 hours and 252 g. The STL files are in [`3D files`](3D%20files), with ready-made print
+sets in each folder's `.3mf` file.
 
 ### Chassis
 
-| Part | File | Qty |
-|---|---|---|
-| Chassis plate | `chassis/3D Printed base.stl` | 1 |
-| Wheel hub | `chassis/50mm Wheel Hub for O-ring.stl` | 2 |
-| 15 mm PCB stand-off | `chassis/MC1 stand off.stl` | 4 |
-| Deck | `deck/Deck plate.stl` | 1 |
-| 70 mm deck stand-off | `deck/Deck stand off.stl` | 4 |
+| Part | File | Qty | PLA each | Time each |
+|---|---|---|---|---|
+| Chassis plate | `chassis/3D Printed base.stl` | 1 | 134 g | 170 min |
+| Wheel hub | `chassis/50mm Wheel Hub for O-ring.stl` | 2 | 4 g | 10 min |
+| 15 mm PCB stand-off | `chassis/MC1 stand off.stl` | 4 | 0.5 g | 4 min |
+| Deck | `deck/Deck plate.stl` | 1 | 92 g | 127 min |
+| 70 mm deck stand-off | `deck/Deck stand off.stl` | 4 | 4 g | 6 min |
 
 ### Optional accessories
 
 Print only the ones you need.
 
-| Part | File | Qty in this build |
-|---|---|---|
-| Sharp sensor bracket | `accessories/Sharp sensor bracket.stl` | 3 |
-| Toggle switch bracket | `accessories/Toggle switch bracket.stl` | 1 |
-| Raspberry Pi mount | `accessories/Pi Mount.stl` | 1 |
-| Raspberry Pi camera mount | `accessories/Pi Camera Mount.stl` | 1 |
-| Pi Zero mount | `accessories/Pi Zero Mount.stl` | Alternative |
-| Pi Zero mount, vertical | `accessories/Pi Zero Mount - Vert.stl` | Alternative |
-
-### Print plates
-
-Each `.3mf` set is laid out as these plates. The times and weights are Bambu Studio's estimates for a
-Bambu Lab P1S.
-
-| Set | Plate | Parts | PLA | Time |
+| Part | File | Qty in this build | PLA each | Time each |
 |---|---|---|---|---|
-| `chassis set.3mf` | 1 | Chassis plate and 4 PCB stand-offs | 136 g | 3 h 2 min |
-| | 2 | 2 wheel hubs | 8 g | 25 min |
-| `deck set.3mf` | 1 | Deck | 92 g | 2 h 13 min |
-| | 2 | 4 deck stand-offs | 11 g | 27 min |
-| `accessory set.3mf` | 1 | Pi mount and camera mount | 17 g | 40 min |
-| | 2 | Pi Zero mount and vertical Pi Zero mount. These are alternatives, so delete the one you don't need | 25 g for both | 48 min for both |
-| | 3 | 3 Sharp sensor brackets | 11 g | 29 min |
-| | 4 | Toggle switch bracket | 5 g | 19 min |
+| Sharp sensor bracket | `accessories/Sharp sensor bracket.stl` | 3 | 4 g | 10 min |
+| Toggle switch bracket | `accessories/Toggle switch bracket.stl` | 1 | 5 g | 14 min |
+| Raspberry Pi mount | `accessories/Pi Mount.stl` | 1 | 11 g | 18 min |
+| Raspberry Pi camera mount | `accessories/Pi Camera Mount.stl` | 1 | 6 g | 18 min |
+| Pi Zero mount | `accessories/Pi Zero Mount.stl` | Alternative | 13 g | 18 min |
+| Pi Zero mount, vertical | `accessories/Pi Zero Mount - Vert.stl` | Alternative | 13 g | 25 min |
 
 ### Print settings
 
-All parts use the same settings, and the `.3mf` files already contain them:
+The times and weights above come from these settings, on a Bambu Lab P1S. All parts use the same
+settings, and the `.3mf` files already contain them:
 
 | Setting | Value |
 |---|---|

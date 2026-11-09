@@ -71,7 +71,7 @@ settings, and the `.3mf` files already contain them:
 |---|---|---|
 | [50 mm OD, 40 mm ID O-ring](https://www.amazon.co.uk/dp/B0GSZ66ZXH?th=1) | 2 | 2 |
 | [Miniature ball castor](https://www.amazon.co.uk/dp/B0CQ721G26?th=1). Do not use the self-adhesive pads | 2 | 3 |
-| [12 V, 47:1 metal gearmotor with 48 CPR encoder](https://www.pololu.com/product/4885) (Pololu item #4885 or equivalent). Its connector needs changing to fit MC1: see [Motor connectors](#motor-connectors) | 2 | 5 |
+| [12 V, 47:1 metal gearmotor with 48 CPR encoder](https://www.pololu.com/product/4885) (Pololu item #4885 or equivalent). Its connector needs changing to fit MC1: see [Motor connectors](#motor-connectors). Included, with the connectors fitted, in the Rapid Integration Kit | 2 | 5 |
 | [Battery pack](https://www.amazon.co.uk/dp/B0928GTP85) (this build uses an 11.1 V, 5200 mAh LiPo with an XT60 connector) | 1 | 7 |
 | [25 mm wide Velcro strap](https://www.amazon.co.uk/dp/B0GGH11QQN?th=1): about 220 mm cut from a roll plus a buckle, or a 200 mm pre-cut strap with an integrated buckle | 1 | 7 |
 | [Motion Core MC1 PCB](https://firstlayerrobotics.com/shop), USB version. Comes with the JP1 jumper | 1 | 9 |
@@ -106,7 +106,7 @@ fastener supplier or as an assorted kit. Keep to the stated lengths.
 | M3 x 10 mm screws, M3 washers and M3 nuts, to fix the camera mount to the deck | 4 of each | 15 |
 | M2 x 10 mm screws, M2 washers and M2 nuts, to fix the camera module to its mount | 4 of each | 15 |
 | USB-C to USB data cable, between MC1 and the Pi 5 | 1 | 15 |
-| USB-C pigtail cable, to power the Pi from MC1 | 1 | 15 |
+| USB-C pigtail cable, to power the Pi from MC1. Included in the [Rapid Integration Kit](https://firstlayerrobotics.com/shop) | 1 | 15 |
 
 ---
 
@@ -142,7 +142,7 @@ Sort this out before you start the build. There are three ways to do it.
 |---|---|---|
 | **A. Fit new connectors** | Mini-Fit Jr. and JST XH housings and crimp terminals, and the right crimp tool for each | You already have the crimp tools |
 | **B. Solder on the Cable Kit** | A [Motion Core Cable Kit](https://firstlayerrobotics.com/shop), a soldering iron and heat-shrink sleeving | You can solder but have no crimp tools |
-| **C. Buy the Rapid Integration Kit** | A [Motion Core Rapid Integration Kit](https://firstlayerrobotics.com/shop) (RIK), which comes with a pair of motors with MC1's connectors already fitted | You want to skip this job |
+| **C. Buy the Rapid Integration Kit** | A [Motion Core Rapid Integration Kit](https://firstlayerrobotics.com/shop) (RIK), which comes with two Pololu #4885 motors with MC1's connectors already fitted | You want to skip this job |
 
 ### Wiring
 
@@ -194,8 +194,10 @@ connectors. Each is 300 mm long, with tinned ends that you can cut to length.
 
 ### Option C: Rapid Integration Kit
 
-The motors in the Rapid Integration Kit are ready to plug in, so there is nothing to do here. Fit them
-in [step 5](#step-5-fit-the-motors) like any other motor.
+The Rapid Integration Kit's two motors are the Pololu #4885 used in this guide, with MC1's connectors
+already fitted, so there is nothing to do here. Fit them in [step 5](#step-5-fit-the-motors), and use
+the settings in [step 14](#step-14-configure-mc1-for-frindo) as they are. The kit also includes the
+USB-C pigtail cable that powers the Raspberry Pi in step 15.
 
 ---
 

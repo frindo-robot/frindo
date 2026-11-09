@@ -1,0 +1,12 @@
+# Only what is listed here is published. Working files (spreadsheets, original
+# photos, the zip, full-set .3mf) stay local.
+/*
+!/.gitignore
+!/README.md
+!/BUILD.md
+!/make-guide-images.py
+!/3D files/
+
+# Held back until DesignerUserId is cleaned out
+*.3mf
+.DS_Store

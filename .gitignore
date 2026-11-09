@@ -9,6 +9,4 @@
 !/guide-images/
 !/3D files/
 
-# Held back until DesignerUserId is cleaned out
-*.3mf
 .DS_Store

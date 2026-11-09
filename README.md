@@ -18,7 +18,7 @@ limiting and encoder odometry for you.
 
 ## What you need
 
-- A desktop 3D printer. Everything prints in about 8 hours, using roughly 320 g of PLA.
+- A desktop 3D printer. The robot in the build guide prints in about 7½ hours, using roughly 280 g of PLA.
 - A [Motion Core MC1](https://firstlayerrobotics.com/motion-core) motor controller
 - Two 12 V gearmotors with encoders, and a 3S LiPo battery
 - A Raspberry Pi 5 and camera, for the robot in the build guide. The deck can carry other electronics.

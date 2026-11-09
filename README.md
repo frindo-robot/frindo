@@ -10,8 +10,6 @@ build yourself. This version is redrawn to print on a standard desktop 3D printe
 comes from Motion Core MC1, a commercial motor controller that handles closed-loop control, current
 limiting and encoder odometry for you.
 
-> **Status:** in development. The design is being finalised, and the build guide is still being tested.
-
 ## Start here
 
 - [Build guide](BUILD.md): 17 steps, from printing the parts to driving the robot
@@ -38,8 +36,11 @@ Frindo sends velocity commands to MC1 and gets odometry back, over the open
 ## Licence
 
 The robot's design files and this documentation are released under
-[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). You may modify, print and sell them,
-as long as you give credit and share your changes under the same licence.
+[CC BY-SA 4.0](LICENSE). You may modify, print and sell them, as long as you give credit and share
+your changes under the same licence. The image script, `make-guide-images.py`, is under the MIT
+licence, as stated in the file.
+
+To give credit, use: *Frindo by Jonathan Luke, [frindo.org](https://frindo.org)*.
 
 This does not cover:
 

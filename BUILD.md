@@ -50,16 +50,16 @@ Print only the ones you need.
 The times and weights above come from these settings, on a Bambu Lab P1S. The `.3mf` files already
 contain them.
 
-| Setting | Chassis set | Deck set | Accessory set |
-|---|---|---|---|
-| Material | PLA | PLA | PLA |
-| Nozzle | 0.4 mm | 0.4 mm | 0.4 mm |
-| Layer height | 0.2 mm | 0.2 mm | 0.2 mm |
-| Walls | 2 | 2 | 2 |
-| Infill | 30% | 15% | 15% |
-| Supports | Automatic | Automatic, off for the stand-offs | Automatic |
+All parts use the same settings:
 
-Automatic supports use a 30° overhang threshold.
+| Setting | Value |
+|---|---|
+| Material | PLA |
+| Nozzle | 0.4 mm |
+| Layer height | 0.2 mm |
+| Walls | 2 |
+| Infill | 30% |
+| Supports | Automatic (30° overhang threshold), off for the stand-offs |
 
 ---
 
@@ -74,10 +74,9 @@ Automatic supports use a 30° overhang threshold.
 | [12 V, 47:1 metal gearmotor with 48 CPR encoder](https://www.pololu.com/product/4885) (Pololu item #4885 or equivalent) | 2 | 5 |
 | [Battery pack](https://www.amazon.co.uk/dp/B0928GTP85) (this build uses an 11.1 V, 5200 mAh LiPo with an XT60 connector) | 1 | 7 |
 | [25 mm wide Velcro strap](https://www.amazon.co.uk/dp/B0GGH11QQN?th=1): about 220 mm cut from a roll plus a buckle, or a 200 mm pre-cut strap with an integrated buckle | 1 | 7 |
-| [Motion Core MC1 PCB](https://firstlayerrobotics.com/shop) | 1 | 9 |
+| [Motion Core MC1 PCB](https://firstlayerrobotics.com/shop), USB version. Comes with the JP1 jumper | 1 | 9 |
 | [Motion Core Cable Kit](https://firstlayerrobotics.com/shop): motor, encoder, E-stop/charger and aux 5 V cables | 1 | 9 |
 | [Motion Core Shorting Jumper Links (pair)](https://firstlayerrobotics.com/shop), for J2 and J3 if you are not fitting switches | 1 | 9 |
-| Jumper link for JP1, to select the 5 V encoder supply | 1 | 9 |
 | 3S LiPo balance charger | 1 | [Battery safety](#battery-safety) |
 | M3 x 8 mm screws | 16 | 3, 4, 5, 9 |
 | M3 x 10 mm screws | 8 | 11, 12 |
@@ -91,12 +90,17 @@ fastener supplier or as an assorted kit. Keep to the stated lengths.
 |---|---|---|
 | M3 x 8 mm screws | 2 per bracket | 8 |
 | M3 nuts | 2 per bracket in a 45° position | 8 |
-| [Battery switch](https://www.amazon.co.uk/dp/B0B8YM8N7W?th=1), or a short battery extension cable if you need the extra reach | 1 | 10 |
+| [Battery switch](https://www.amazon.co.uk/dp/B0B8YM8N7W?th=1), pre-wired in an in-line lead with an XT60 connector at each end. Or a short battery extension cable if you need the extra reach | 1 | 10 |
 
 ### Raspberry Pi and camera
 
 | Item | Qty | Step |
 |---|---|---|
+| [Raspberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5/), 4 GB minimum. 4 GB is enough for this guide, but 8 GB is recommended if you plan to run SLAM, Nav2 or similar | 1 | 15 |
+| Low-profile heatsink for the Raspberry Pi 5 | 1 | 15 |
+| [Raspberry Pi Camera Module 3 Wide](https://www.raspberrypi.com/products/camera-module-3/) | 1 | 15 |
+| 200 mm Raspberry Pi 5 camera adapter cable | 1 | 15 |
+| 64 GB A2-rated microSD card | 1 | 16 |
 | M3 x 10 mm screws, M3 washers and M3 nuts, to fix the Pi or Pi Zero mount to the deck | 4 of each | 15 |
 | M2.5 x 5 mm screws, to fix the Pi or Pi Zero to its mount | 4 | 15 |
 | M3 x 10 mm screws, M3 washers and M3 nuts, to fix the camera mount to the deck | 4 of each | 15 |
@@ -228,7 +232,7 @@ a 45° position
 
 Fit the MC1 PCB to the four PCB stand-offs using four M3 x 8 mm screws.
 
-Before you plug in the encoders, fit the jumper on JP1 (`ENC VOLTAGE`) between pin 1 (5 V) and pin 2
+Before you plug in the encoders, fit the jumper supplied with MC1 on JP1 (`ENC VOLTAGE`) between pin 1 (5 V) and pin 2
 (`ENC_VCC`). This selects 5 V as the supply to both encoders. The encoders will not work with JP1
 left open.
 
@@ -247,7 +251,7 @@ above:
 > **Important:** with a link fitted to J3, the robot has no hardware E-stop. That is fine on the
 > bench, but fit a real normally-closed E-stop switch if the robot will be running near people.
 
-**You will need:** 1x Motion Core MC1 PCB, 4x M3 x 8 mm screws, 1x jumper link for JP1, the motor and
+**You will need:** 1x Motion Core MC1 PCB, 4x M3 x 8 mm screws, the JP1 jumper supplied with MC1, the motor and
 encoder cables from the Cable Kit, and 2x links for J2 and J3 if you are not fitting switches
 
 [![Motion Core MC1 fitted to the chassis with the motor and encoder cables connected](guide-images/thumbs/20.jpg)](guide-images/20.jpg) [![Close-up of MC1 with wire links fitted to the E-stop and charger connectors](guide-images/thumbs/21.jpg)](guide-images/21.jpg)
@@ -361,24 +365,43 @@ electronics and sensors you want to use to drive the robot.
 In this example, we use a Raspberry Pi 5 and a Wide-angle Raspberry Pi Camera Module 3 to build a
 complete ROS 2 based teleoperated robot.
 
-### Step 15: Fit the deck accessories
+### Step 15: Fit the Raspberry Pi and camera
 
-Print the accessories you are going to use and remove any support material. Fit them to the deck using
-M3 x 10 mm screws, with an M3 washer and nut on the underside of the deck.
+Keep the battery unplugged for this step.
 
-- **Raspberry Pi or Pi Zero mount:** in addition to the four M3 x 10 mm screws, you need four
-  M2.5 x 5 mm screws to hold the Pi or Pi Zero to the mount.
-- **Raspberry Pi camera mount:** you need four M2 x 10 mm screws, four M2 washers and four M2 nuts to
-  hold the camera module to the mount plus four M3 x 10 mm screws, nuts and washers to hold the mount to the deck.
+1. **Fit the mounts.** Print the accessories you are going to use and remove any support material.
+   Fit the camera mount at the front edge of the deck and the Pi mount near the middle, as in the
+   photos, using four M3 x 10 mm screws for each, with an M3 washer and nut on the underside of the
+   deck.
+
+[![Top view of the deck with the Pi mount and camera mount fitted](guide-images/thumbs/27.jpg)](guide-images/27.jpg) [![Angled view of the Pi mount and camera mount on the deck](guide-images/thumbs/28.jpg)](guide-images/28.jpg) [![The camera on its mount, with washers and nuts visible under the deck](guide-images/thumbs/29.jpg)](guide-images/29.jpg)
+
+2. **Fit the Pi.** Fit the heatsink to the Pi 5 first, following the instructions that come with it.
+   Then fix the Pi to its mount with four M2.5 x 5 mm screws, with its USB and Ethernet ports facing
+   away from the camera.
+3. **Fit the camera.** Fix the camera module to its mount with four M2 x 10 mm screws, washers and
+   nuts, with the lens facing forward.
+4. **Connect the camera cable.** The narrow end of the cable goes to the Pi and the wide end to the
+   camera. On each connector, lift the latch, push the cable fully in, and close the latch. This build
+   uses the Pi's camera connector nearest the Ethernet port. If the camera is not detected later,
+   check that the cable is the right way round and fully home at both ends.
+5. **Connect the USB data cable.** Pass it down through the large hole in the deck beside the Pi's
+   USB ports. Plug the USB-C end into J7 on MC1, and the other end into one of the Pi's blue USB 3
+   ports.
+6. **Connect the Pi's power.** Pass the USB-C power cable through the same hole, and connect it from
+   J4 (aux 5 V) on MC1 to the Pi's USB-C power socket. The Pi now runs from the robot's battery,
+   through MC1.
 
 **You will need:**
 
+- A Raspberry Pi 5 (4 GB minimum, or 8 GB for SLAM and Nav2) with a low-profile heatsink
+- A Raspberry Pi Camera Module 3 Wide and a 200 mm Raspberry Pi 5 camera adapter cable
 - For a Raspberry Pi or Pi Zero: 4x M3 x 10 mm screws, 4x M3 washers, 4x M3 nuts, 4x M2.5 x 5 mm screws
 - For the Pi camera mount: 4x M3 x 10 mm screws, 4x M3 washers, 4x M3 nuts, 4x M2 x 10 mm screws, 4x M2 washers, 4x M2 nuts
 - A USB-C to USB data cable, between MC1 and the Pi 5
 - A USB-C pigtail cable, to power the Pi from MC1
 
-[![Top view of the deck with the Pi mount and camera mount fitted](guide-images/thumbs/27.jpg)](guide-images/27.jpg) [![Angled view of the Pi mount and camera mount on the deck](guide-images/thumbs/28.jpg)](guide-images/28.jpg) [![The camera on its mount, with washers and nuts visible under the deck](guide-images/thumbs/29.jpg)](guide-images/29.jpg) [![Top view with the Raspberry Pi, camera cable and USB cables fitted](guide-images/thumbs/30.jpg)](guide-images/30.jpg) [![The complete robot from the side](guide-images/thumbs/31.jpg)](guide-images/31.jpg) [![Close-up of the camera and Raspberry Pi on the deck](guide-images/thumbs/32.jpg)](guide-images/32.jpg)
+[![Top view with the Raspberry Pi, camera cable and USB cables fitted](guide-images/thumbs/30.jpg)](guide-images/30.jpg) [![The complete robot from the side](guide-images/thumbs/31.jpg)](guide-images/31.jpg) [![Close-up of the camera and Raspberry Pi on the deck](guide-images/thumbs/32.jpg)](guide-images/32.jpg)
 
 ---
 

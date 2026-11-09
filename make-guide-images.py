@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 Jonathan Luke
 """Make the build guide's web images from the original photographs.
 
 Originals in "build images" are never changed. For each photo this:

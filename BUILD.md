@@ -10,6 +10,7 @@ up the software and get the robot driving.
 - [Parts to print](#parts-to-print)
 - [Bill of materials](#bill-of-materials)
 - [Battery safety](#battery-safety)
+- [Motor connectors](#motor-connectors)
 - [Chassis build](#chassis-build)
 - [Power-up and configuration](#power-up-and-configuration)
 - [Adding a Raspberry Pi and camera](#adding-a-raspberry-pi-and-camera)
@@ -70,11 +71,11 @@ settings, and the `.3mf` files already contain them:
 |---|---|---|
 | [50 mm OD, 40 mm ID O-ring](https://www.amazon.co.uk/dp/B0GSZ66ZXH?th=1) | 2 | 2 |
 | [Miniature ball castor](https://www.amazon.co.uk/dp/B0CQ721G26?th=1). Do not use the self-adhesive pads | 2 | 3 |
-| [12 V, 47:1 metal gearmotor with 48 CPR encoder](https://www.pololu.com/product/4885) (Pololu item #4885 or equivalent) | 2 | 5 |
+| [12 V, 47:1 metal gearmotor with 48 CPR encoder](https://www.pololu.com/product/4885) (Pololu item #4885 or equivalent). Its connector needs changing to fit MC1: see [Motor connectors](#motor-connectors) | 2 | 5 |
 | [Battery pack](https://www.amazon.co.uk/dp/B0928GTP85) (this build uses an 11.1 V, 5200 mAh LiPo with an XT60 connector) | 1 | 7 |
 | [25 mm wide Velcro strap](https://www.amazon.co.uk/dp/B0GGH11QQN?th=1): about 220 mm cut from a roll plus a buckle, or a 200 mm pre-cut strap with an integrated buckle | 1 | 7 |
 | [Motion Core MC1 PCB](https://firstlayerrobotics.com/shop), USB version. Comes with the JP1 jumper | 1 | 9 |
-| [Motion Core Cable Kit](https://firstlayerrobotics.com/shop): motor, encoder, E-stop/charger and aux 5 V cables | 1 | 9 |
+| [Motion Core Cable Kit](https://firstlayerrobotics.com/shop): motor, encoder, E-stop/charger and aux 5 V cables. Its motor and encoder cables are option B in [Motor connectors](#motor-connectors) | 1 | 9 |
 | [Motion Core Shorting Jumper Links (pair)](https://firstlayerrobotics.com/shop), for J2 and J3 if you are not fitting switches | 1 | 9 |
 | 3S LiPo balance charger | 1 | [Battery safety](#battery-safety) |
 | M3 x 8 mm screws | 16 | 3, 4, 5, 9 |
@@ -127,6 +128,77 @@ fastener supplier or as an assorted kit. Keep to the stated lengths.
 
 ---
 
+## Motor connectors
+
+The Pololu gearmotors come with all six wires ending in a single 0.1″ header, which does not fit MC1.
+MC1 needs two connectors on each motor:
+
+- **Motor power:** a 2-pin Molex Mini-Fit Jr., for J9 (left) or J11 (right)
+- **Encoder:** a 5-pin JST XH, for J8 (left) or J10 (right)
+
+Sort this out before you start the build. There are three ways to do it.
+
+| Option | What you need | Best if |
+|---|---|---|
+| **A. Fit new connectors** | Mini-Fit Jr. and JST XH housings and crimp terminals, and the right crimp tool for each | You already have the crimp tools |
+| **B. Solder on the Cable Kit** | A [Motion Core Cable Kit](https://firstlayerrobotics.com/shop), a soldering iron and heat-shrink sleeving | You can solder but have no crimp tools |
+| **C. Buy the Rapid Integration Kit** | A [Motion Core Rapid Integration Kit](https://firstlayerrobotics.com/shop) (RIK), which comes with a pair of motors with MC1's connectors already fitted | You want to skip this job |
+
+### Wiring
+
+Options A and B both use this wiring. The wire colours are Pololu's.
+
+| Pololu wire | Function | MC1 connector | Pin |
+|---|---|---|---|
+| Red | Motor power | Motor (J9 or J11) | 1 (M+) |
+| Black | Motor power | Motor (J9 or J11) | 2 (M−) |
+| Green | Encoder GND | Encoder (J8 or J10) | 1 (GND) |
+| Blue | Encoder supply | Encoder (J8 or J10) | 2 (VIN) |
+| Yellow | Encoder A | Encoder (J8 or J10) | 3 (A) |
+| White | Encoder B | Encoder (J8 or J10) | 4 (B) |
+| | Not used | Encoder (J8 or J10) | 5 (shield), leave empty |
+
+Find pin 1 from the pin 1 marking on the board. Do not count the silkscreen labels from left to right,
+because they are printed in the opposite order to the pin numbers.
+
+Do not worry about getting a motor or encoder "backwards". Each motor's direction, and the direction
+its encoder counts, are set in software in [step 14](#step-14-configure-mc1-for-frindo), so you never
+need to rewire to fix a direction.
+
+### Option A: fit new connectors
+
+1. Cut the 0.1″ header off, leaving as much wire as you can.
+2. Strip each wire by the length the terminal maker specifies, and crimp on a terminal. Use
+   Mini-Fit Jr. female terminals for the red and black wires, and JST XH terminals (SXH series) for
+   the four encoder wires. Choose terminals that suit the wire size.
+3. Push each terminal into its housing, using the pin numbers in the table above, until it clicks.
+   Use a 2-circuit Mini-Fit Jr. receptacle housing for the motor and a 5-way JST XH housing (XHP-5) for
+   the encoder.
+4. Tug each wire gently to check that it is locked in.
+
+Crimp the terminals with the proper tool for each connector family. Pliers do not make a reliable
+crimp, and a loose motor terminal can cause intermittent faults that are hard to trace.
+
+### Option B: solder on the Cable Kit
+
+The Cable Kit has a motor cable and an encoder cable for each motor, already fitted with MC1's
+connectors. Each is 300 mm long, with tinned ends that you can cut to length.
+
+1. Plug the kit cables into MC1 before you cut anything, and use the pin numbers on the board to note
+   which wire goes to each pin.
+2. Cut the 0.1″ header off the motor wires. Cut the kit cables to length, leaving enough slack to
+   reach from the motor to MC1, as in [step 9](#step-9-fit-motion-core-mc1).
+3. Slide a piece of heat-shrink sleeving onto each wire, then solder each motor wire to its matching
+   kit wire using the table above.
+4. Slide the sleeving over each joint and shrink it, so no bare metal is showing.
+
+### Option C: Rapid Integration Kit
+
+The motors in the Rapid Integration Kit are ready to plug in, so there is nothing to do here. Fit them
+in [step 5](#step-5-fit-the-motors) like any other motor.
+
+---
+
 ## Chassis build
 
 ### Step 1: Print the parts
@@ -169,6 +241,9 @@ inner-most set of recessed holes.
 [![Underside of the chassis with arrows marking the four stand-off screws](guide-images/thumbs/7.jpg)](guide-images/7.jpg) [![Top of the chassis with the four stand-offs fitted](guide-images/thumbs/8.jpg)](guide-images/8.jpg)
 
 ### Step 5: Fit the motors
+
+> **Before you start:** the motors need MC1's connectors fitted. If you have not done that yet, see
+> [Motor connectors](#motor-connectors).
 
 Fit the motors using two M3 x 8 mm screws per motor. Orient the motors so that the motor and encoder
 wires exit nearest the large pass-through hole in the chassis. Once they are fitted, pass the wires
@@ -235,8 +310,8 @@ Before you plug in the encoders, fit the jumper supplied with MC1 on JP1 (`ENC V
 (`ENC_VCC`). This selects 5 V as the supply to both encoders. The encoders will not work with JP1
 left open.
 
-Then connect the motor and encoder cables, noting the correct left/right orientation when viewed from
-above:
+Then plug in each motor's power and encoder connectors (see [Motor connectors](#motor-connectors)),
+noting the correct left/right orientation when viewed from above:
 
 | Connection | Left | Right |
 |---|---|---|
@@ -250,8 +325,7 @@ above:
 > **Important:** with a link fitted to J3, the robot has no hardware E-stop. That is fine on the
 > bench, but fit a real normally-closed E-stop switch if the robot will be running near people.
 
-**You will need:** 1x Motion Core MC1 PCB, 4x M3 x 8 mm screws, the JP1 jumper supplied with MC1, the motor and
-encoder cables from the Cable Kit, and 2x links for J2 and J3 if you are not fitting switches
+**You will need:** 1x Motion Core MC1 PCB, 4x M3 x 8 mm screws, the JP1 jumper supplied with MC1, and 2x links for J2 and J3 if you are not fitting switches
 
 [![Motion Core MC1 fitted to the chassis with the motor and encoder cables connected](guide-images/thumbs/20.jpg)](guide-images/20.jpg) [![Close-up of MC1 with wire links fitted to the E-stop and charger connectors](guide-images/thumbs/21.jpg)](guide-images/21.jpg)
 

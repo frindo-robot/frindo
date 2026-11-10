@@ -148,6 +148,9 @@ Sort this out before you start the build. There are two ways to do it.
 
 Both options use this wiring. The wire colours are Pololu's.
 
+If you use a motor from another maker, check its wiring against this table before you start. Other
+makers may use the same colours for different signals.
+
 | Pololu wire | Function | MC1 connector | Pin |
 |---|---|---|---|
 | Red | Motor power | Motor (J9 or J11) | 1 (M+) |
@@ -182,15 +185,14 @@ crimp, and a loose motor terminal can cause intermittent faults that are hard to
 ### Option B: solder on the Cable Kit
 
 The Cable Kit has a pair of motor cables and a pair of encoder cables, already fitted with MC1's
-connectors. Each is 300 mm long, with tinned ends that you can cut to length.
+connectors. Each is 300 mm long, with tinned ends that you can cut to length. The kit's wires use
+the same colours as the Pololu motor's, so you join each wire to the one of the same colour.
 
-1. Plug the kit cables into MC1 before you cut anything, and use the pin numbers on the board to note
-   which wire goes to each pin.
-2. Cut the 0.1″ header off the motor wires. Cut the kit cables to length, leaving enough slack to
+1. Cut the 0.1″ header off the motor wires. Cut the kit cables to length, leaving enough slack to
    reach from the motor to MC1, as in [step 9](#step-9-fit-motion-core-mc1).
-3. Slide a piece of heat-shrink sleeving onto each wire, then solder each motor wire to its matching
-   kit wire using the table above.
-4. Slide the sleeving over each joint and shrink it, so no bare metal is showing.
+2. Slide a piece of heat-shrink sleeving onto each wire, then solder each motor wire to the kit wire
+   of the same colour.
+3. Slide the sleeving over each joint and shrink it, so no bare metal is showing.
 
 ## Pi power cable
 

@@ -73,7 +73,7 @@ settings, and the `.3mf` files already contain them:
 | [Miniature ball castor](https://www.amazon.co.uk/dp/B0CQ721G26?th=1). Do not use the self-adhesive pads | 2 | 3 |
 | [12 V, 47:1 metal gearmotor with 48 CPR encoder](https://www.pololu.com/product/4885) (Pololu item #4885 or equivalent). Its connector needs changing to fit MC1: see [Motor connectors](#motor-connectors). Included, with the connectors fitted, in the Rapid Integration Kit | 2 | 5 |
 | [Battery pack](https://www.amazon.co.uk/dp/B0928GTP85) (this build uses an 11.1 V, 5200 mAh LiPo with an XT60 connector) | 1 | 7 |
-| [25 mm wide Velcro strap](https://www.amazon.co.uk/dp/B0GGH11QQN?th=1): about 220 mm cut from a roll plus a buckle, or a 200 mm pre-cut strap with an integrated buckle | 1 | 7 |
+| [Velcro strap, 20 to 25 mm wide](https://www.amazon.co.uk/dp/B0GGH11QQN?th=1): about 220 mm cut from a roll plus a buckle, or a 200 mm pre-cut strap with an integrated buckle | 1 | 7 |
 | [Motion Core MC1 PCB](https://firstlayerrobotics.com/shop), USB version. Comes with the JP1 jumper | 1 | 9 |
 | [Motion Core Cable Kit](https://firstlayerrobotics.com/shop): motor, encoder, E-stop/charger and aux 5 V cables. Its motor and encoder cables are option B in [Motor connectors](#motor-connectors) | 1 | 9 |
 | [Motion Core Shorting Jumper Links (pair)](https://firstlayerrobotics.com/shop), for J2 and J3 if you are not fitting switches | 1 | 9 |
@@ -273,7 +273,7 @@ the end of the shaft.
 
 ### Step 7: Test-fit the battery pack
 
-This needs a 25 mm wide Velcro strap. You can use about 220 mm from a cut-to-length roll with a
+This needs a Velcro strap 20 to 25 mm wide. You can use about 220 mm from a cut-to-length roll with a
 separate buckle, as in these photos, or a 200 mm pre-cut strap with a buckle.
 
 The strap fits through the two slots, with the free end and buckle on the underside of the robot.

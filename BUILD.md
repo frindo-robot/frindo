@@ -10,12 +10,12 @@ up the software and get the robot driving.
 - [Parts to print](#parts-to-print)
 - [Bill of materials](#bill-of-materials)
 - [Battery safety](#battery-safety)
-- [Motor connectors](#motor-connectors)
-- [Pi power cable](#pi-power-cable)
 - [Chassis build](#chassis-build)
 - [Power-up and configuration](#power-up-and-configuration)
 - [Adding a Raspberry Pi and camera](#adding-a-raspberry-pi-and-camera)
 - [Software](#software)
+- [Motor connectors](#motor-connectors)
+- [Pi power cable](#pi-power-cable)
 
 ---
 
@@ -129,114 +129,6 @@ fastener supplier or as an assorted kit. Keep to the stated lengths.
 
 ---
 
-## Motor connectors
-
-The Pololu gearmotors come with all six wires ending in a single 0.1″ header, which does not fit MC1.
-MC1 needs two connectors on each motor:
-
-- **Motor power:** a 2-pin Molex Mini-Fit Jr., for J9 (left) or J11 (right)
-- **Encoder:** a 5-pin JST XH, for J8 (left) or J10 (right)
-
-Sort this out before you start the build. There are two ways to do it.
-
-| Option | What you need | Best if |
-|---|---|---|
-| **A. Fit new connectors** | Mini-Fit Jr. and JST XH housings and crimp terminals, and the right crimp tool for each | You already have the crimp tools |
-| **B. Solder on the Cable Kit** | A [Motion Core Cable Kit](https://firstlayerrobotics.com/shop), a soldering iron and heat-shrink sleeving | You can solder but have no crimp tools |
-
-### Wiring
-
-Both options use this wiring. The wire colours are Pololu's.
-
-If you use a motor from another maker, check its wiring against this table before you start. Other
-makers may use the same colours for different signals.
-
-| Pololu wire | Function | MC1 connector | Pin |
-|---|---|---|---|
-| Red | Motor power | Motor (J9 or J11) | 1 (M+) |
-| Black | Motor power | Motor (J9 or J11) | 2 (M−) |
-| Green | Encoder GND | Encoder (J8 or J10) | 1 (GND) |
-| Blue | Encoder supply | Encoder (J8 or J10) | 2 (VIN) |
-| Yellow | Encoder A | Encoder (J8 or J10) | 3 (A) |
-| White | Encoder B | Encoder (J8 or J10) | 4 (B) |
-| | Not used | Encoder (J8 or J10) | 5 (shield), leave empty |
-
-Find pin 1 from the pin 1 marking on the board. Do not count the silkscreen labels from left to right,
-because they are printed in the opposite order to the pin numbers.
-
-Do not worry about getting a motor or encoder "backwards". Each motor's direction, and the direction
-its encoder counts, are set in software in [step 14](#step-14-configure-mc1-for-frindo), so you never
-need to rewire to fix a direction.
-
-### Option A: fit new connectors
-
-1. Cut the 0.1″ header off, leaving as much wire as you can.
-2. Strip each wire by the length the terminal maker specifies, and crimp on a terminal. Use
-   Mini-Fit Jr. female terminals for the red and black wires, and JST XH terminals (SXH series) for
-   the four encoder wires. Choose terminals that suit the wire size.
-3. Push each terminal into its housing, using the pin numbers in the table above, until it clicks.
-   Use a 2-circuit Mini-Fit Jr. receptacle housing for the motor and a 5-way JST XH housing (XHP-5) for
-   the encoder.
-4. Tug each wire gently to check that it is locked in.
-
-Crimp the terminals with the proper tool for each connector family. Pliers do not make a reliable
-crimp, and a loose motor terminal can cause intermittent faults that are hard to trace.
-
-### Option B: solder on the Cable Kit
-
-The Cable Kit has a pair of motor cables and a pair of encoder cables, already fitted with MC1's
-connectors. Each is 300 mm long, with tinned ends that you can cut to length. The kit's wires use
-the same colours as the Pololu motor's, so you join each wire to the one of the same colour.
-
-1. Cut the 0.1″ header off the motor wires. Cut the kit cables to length, leaving enough slack to
-   reach from the motor to MC1, as in [step 9](#step-9-fit-motion-core-mc1).
-2. Slide a piece of heat-shrink sleeving onto each wire, then solder each motor wire to the kit wire
-   of the same colour.
-3. Slide the sleeving over each joint and shrink it, so no bare metal is showing.
-
-## Pi power cable
-
-The Raspberry Pi 5 in step 15 runs from the robot's battery, powered from J4, MC1's 5 V auxiliary
-output. You need a [USB-C pigtail](https://www.amazon.co.uk/dp/B0HD71KN9W?th=1) for this: a short cable with a USB-C plug at one end and bare wires
-at the other. J4 is a 2-pin JST VH connector, so the bare end needs one fitted.
-
-There are two ways to do this, the same as for the motors.
-
-| Option | What you need | Best if |
-|---|---|---|
-| **A. Fit a new connector** | A 2-way JST VH housing (VHR-2N), two JST VH crimp terminals (SVH series), and a JST VH crimp tool | You already have the crimp tool |
-| **B. Solder on the Cable Kit** | The aux 5 V cable from the [Motion Core Cable Kit](https://firstlayerrobotics.com/shop), a soldering iron and heat-shrink sleeving | You can solder but have no crimp tools |
-
-### Wiring
-
-| Pigtail wire | Function | J4 pin |
-|---|---|---|
-| Red | +5 V | 1, marked **+** on the board |
-| Black | Ground | 2 |
-
-> [!CAUTION]
-> Get this the right way round. Reversing +5 V and ground can damage the Raspberry Pi. Check your
-> pigtail's own labelling, as not every maker uses red and black.
-
-### Option A: fit a new connector
-
-1. Strip each wire by the length JST specifies, and crimp on an SVH terminal using the JST VH crimp
-   tool.
-2. Push the red wire into pin 1 of the VHR-2N housing and the black wire into pin 2, until each one
-   clicks. Tug each wire gently to check that it is locked in.
-
-### Option B: solder on the Cable Kit
-
-1. Plug the Cable Kit's aux 5 V cable into J4 before you cut anything, and use the **+** marking on
-   the board to note which wire goes to pin 1.
-2. Cut the cable to length, leaving enough to reach from J4 to the Pi's USB-C socket, as in
-   [step 15](#step-15-fit-the-raspberry-pi-and-camera).
-3. Slide a piece of heat-shrink sleeving onto each wire, then solder the pigtail's red wire to the
-   pin 1 wire and its black wire to the pin 2 wire.
-4. Slide the sleeving over each joint and shrink it, so no bare metal is showing.
-
----
-
 ## Chassis build
 
 ### Step 1: Print the parts
@@ -280,8 +172,9 @@ inner-most set of recessed holes.
 
 ### Step 5: Fit the motors
 
+> [!NOTE]
 > **Before you start:** the motors need MC1's connectors fitted. If you have not done that yet, see
-> [Motor connectors](#motor-connectors).
+> [Motor connectors](#motor-connectors) at the end of this guide.
 
 Fit the motors using two M3 x 8 mm screws per motor. Orient the motors so that the motor and encoder
 wires exit nearest the large pass-through hole in the chassis. Once they are fitted, pass the wires
@@ -481,6 +374,10 @@ complete ROS 2 based teleoperated robot.
 
 ### Step 15: Fit the Raspberry Pi and camera
 
+> [!NOTE]
+> **Before you start:** the USB-C pigtail that powers the Pi needs a connector fitted to suit MC1.
+> If you have not done that yet, see [Pi power cable](#pi-power-cable) at the end of this guide.
+
 Keep the battery unplugged for this step.
 
 1. **Fit the mounts.** Print the accessories you are going to use and remove any support material.
@@ -577,3 +474,113 @@ card.
 
 The camera is fitted in step 15, but this guide does not cover its software yet. The camera setup
 will follow in a later update.
+
+---
+
+## Motor connectors
+
+The Pololu gearmotors come with all six wires ending in a single 0.1″ header, which does not fit MC1.
+MC1 needs two connectors on each motor:
+
+- **Motor power:** a 2-pin Molex Mini-Fit Jr., for J9 (left) or J11 (right)
+- **Encoder:** a 5-pin JST XH, for J8 (left) or J10 (right)
+
+Do this before [step 5](#step-5-fit-the-motors). There are two ways to do it.
+
+| Option | What you need | Best if |
+|---|---|---|
+| **A. Fit new connectors** | Mini-Fit Jr. and JST XH housings and crimp terminals, and the right crimp tool for each | You already have the crimp tools |
+| **B. Solder on the Cable Kit** | A [Motion Core Cable Kit](https://firstlayerrobotics.com/shop), a soldering iron and heat-shrink sleeving | You can solder but have no crimp tools |
+
+### Wiring
+
+Both options use this wiring. The wire colours are Pololu's.
+
+If you use a motor from another maker, check its wiring against this table before you start. Other
+makers may use the same colours for different signals.
+
+| Pololu wire | Function | MC1 connector | Pin |
+|---|---|---|---|
+| Red | Motor power | Motor (J9 or J11) | 1 (M+) |
+| Black | Motor power | Motor (J9 or J11) | 2 (M−) |
+| Green | Encoder GND | Encoder (J8 or J10) | 1 (GND) |
+| Blue | Encoder supply | Encoder (J8 or J10) | 2 (VIN) |
+| Yellow | Encoder A | Encoder (J8 or J10) | 3 (A) |
+| White | Encoder B | Encoder (J8 or J10) | 4 (B) |
+| | Not used | Encoder (J8 or J10) | 5 (shield), leave empty |
+
+Find pin 1 from the pin 1 marking on the board. Do not count the silkscreen labels from left to right,
+because they are printed in the opposite order to the pin numbers.
+
+Do not worry about getting a motor or encoder "backwards". Each motor's direction, and the direction
+its encoder counts, are set in software in [step 14](#step-14-configure-mc1-for-frindo), so you never
+need to rewire to fix a direction.
+
+### Option A: fit new connectors
+
+1. Cut the 0.1″ header off, leaving as much wire as you can.
+2. Strip each wire by the length the terminal maker specifies, and crimp on a terminal. Use
+   Mini-Fit Jr. female terminals for the red and black wires, and JST XH terminals (SXH series) for
+   the four encoder wires. Choose terminals that suit the wire size.
+3. Push each terminal into its housing, using the pin numbers in the table above, until it clicks.
+   Use a 2-circuit Mini-Fit Jr. receptacle housing for the motor and a 5-way JST XH housing (XHP-5) for
+   the encoder.
+4. Tug each wire gently to check that it is locked in.
+
+Crimp the terminals with the proper tool for each connector family. Pliers do not make a reliable
+crimp, and a loose motor terminal can cause intermittent faults that are hard to trace.
+
+### Option B: solder on the Cable Kit
+
+The Cable Kit has a pair of motor cables and a pair of encoder cables, already fitted with MC1's
+connectors. Each is 300 mm long, with tinned ends that you can cut to length. The kit's wires use
+the same colours as the Pololu motor's, so you join each wire to the one of the same colour.
+
+1. Cut the 0.1″ header off the motor wires. Cut the kit cables to length, leaving enough slack to
+   reach from the motor to MC1, as in [step 9](#step-9-fit-motion-core-mc1).
+2. Slide a piece of heat-shrink sleeving onto each wire, then solder each motor wire to the kit wire
+   of the same colour.
+3. Slide the sleeving over each joint and shrink it, so no bare metal is showing.
+
+---
+
+## Pi power cable
+
+The Raspberry Pi 5 in step 15 runs from the robot's battery, powered from J4, MC1's 5 V auxiliary
+output. You need a [USB-C pigtail](https://www.amazon.co.uk/dp/B0HD71KN9W?th=1) for this: a short cable with a USB-C plug at one end and bare wires
+at the other. J4 is a 2-pin JST VH connector, so the bare end needs one fitted.
+
+There are two ways to do this, the same as for the motors.
+
+| Option | What you need | Best if |
+|---|---|---|
+| **A. Fit a new connector** | A 2-way JST VH housing (VHR-2N), two JST VH crimp terminals (SVH series), and a JST VH crimp tool | You already have the crimp tool |
+| **B. Solder on the Cable Kit** | The aux 5 V cable from the [Motion Core Cable Kit](https://firstlayerrobotics.com/shop), a soldering iron and heat-shrink sleeving | You can solder but have no crimp tools |
+
+### Wiring
+
+| Pigtail wire | Function | J4 pin |
+|---|---|---|
+| Red | +5 V | 1, marked **+** on the board |
+| Black | Ground | 2 |
+
+> [!CAUTION]
+> Get this the right way round. Reversing +5 V and ground can damage the Raspberry Pi. Check your
+> pigtail's own labelling, as not every maker uses red and black.
+
+### Option A: fit a new connector
+
+1. Strip each wire by the length JST specifies, and crimp on an SVH terminal using the JST VH crimp
+   tool.
+2. Push the red wire into pin 1 of the VHR-2N housing and the black wire into pin 2, until each one
+   clicks. Tug each wire gently to check that it is locked in.
+
+### Option B: solder on the Cable Kit
+
+1. Plug the Cable Kit's aux 5 V cable into J4 before you cut anything, and use the **+** marking on
+   the board to note which wire goes to pin 1.
+2. Cut the cable to length, leaving enough to reach from J4 to the Pi's USB-C socket, as in
+   [step 15](#step-15-fit-the-raspberry-pi-and-camera).
+3. Slide a piece of heat-shrink sleeving onto each wire, then solder the pigtail's red wire to the
+   pin 1 wire and its black wire to the pin 2 wire.
+4. Slide the sleeving over each joint and shrink it, so no bare metal is showing.

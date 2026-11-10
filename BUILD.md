@@ -71,8 +71,8 @@ settings, and the `.3mf` files already contain them:
 |---|---|---|
 | [50 mm OD, 40 mm ID O-ring](https://www.amazon.co.uk/dp/B0GSZ66ZXH?th=1) | 2 | 2 |
 | [Miniature ball castor](https://www.amazon.co.uk/dp/B0CQ721G26?th=1). Do not use the self-adhesive pads | 2 | 3 |
-| [12 V, 47:1 metal gearmotor with 48 CPR encoder](https://www.pololu.com/product/4885) (Pololu item #4885 or equivalent). Its connector needs changing to fit MC1: see [Motor connectors](#motor-connectors). Included, with the connectors fitted, in the Rapid Integration Kit | 2 | 5 |
-| [Battery pack](https://www.amazon.co.uk/dp/B0928GTP85) (this build uses an 11.1 V, 5200 mAh LiPo with an XT60 connector) | 1 | 7 |
+| [12 V, 47:1 metal gearmotor with 48 CPR encoder](https://www.pololu.com/product/4885) (Pololu item #4885 or equivalent). Its connector needs changing to fit MC1: see [Motor connectors](#motor-connectors) | 2 | 5 |
+| [Battery pack](https://www.amazon.co.uk/dp/B0928GTP85) (this build uses an 11.1 V, 5200 mAh LiPo with an XT60 connector). The largest pack that fits is 150 x 50 x 28 mm | 1 | 7 |
 | [Velcro strap, 20 to 25 mm wide](https://www.amazon.co.uk/dp/B0GGH11QQN?th=1): about 220 mm cut from a roll plus a buckle, or a 200 mm pre-cut strap with an integrated buckle | 1 | 7 |
 | [Motion Core MC1 PCB](https://firstlayerrobotics.com/shop), USB version. Comes with the JP1 jumper | 1 | 9 |
 | [Motion Core Cable Kit](https://firstlayerrobotics.com/shop): motor, encoder, E-stop/charger and aux 5 V cables. Its motor and encoder cables are option B in [Motor connectors](#motor-connectors) | 1 | 9 |
@@ -106,7 +106,7 @@ fastener supplier or as an assorted kit. Keep to the stated lengths.
 | M3 x 10 mm screws, M3 washers and M3 nuts, to fix the camera mount to the deck | 4 of each | 15 |
 | M2 x 10 mm screws, M2 washers and M2 nuts, to fix the camera module to its mount | 4 of each | 15 |
 | USB-C to USB data cable, between MC1 and the Pi 5 | 1 | 15 |
-| USB-C pigtail cable, to power the Pi from MC1. Included in the [Rapid Integration Kit](https://firstlayerrobotics.com/shop) | 1 | 15 |
+| USB-C pigtail cable, to power the Pi from MC1 | 1 | 15 |
 
 ---
 
@@ -136,17 +136,16 @@ MC1 needs two connectors on each motor:
 - **Motor power:** a 2-pin Molex Mini-Fit Jr., for J9 (left) or J11 (right)
 - **Encoder:** a 5-pin JST XH, for J8 (left) or J10 (right)
 
-Sort this out before you start the build. There are three ways to do it.
+Sort this out before you start the build. There are two ways to do it.
 
 | Option | What you need | Best if |
 |---|---|---|
 | **A. Fit new connectors** | Mini-Fit Jr. and JST XH housings and crimp terminals, and the right crimp tool for each | You already have the crimp tools |
 | **B. Solder on the Cable Kit** | A [Motion Core Cable Kit](https://firstlayerrobotics.com/shop), a soldering iron and heat-shrink sleeving | You can solder but have no crimp tools |
-| **C. Buy the Rapid Integration Kit** | A [Motion Core Rapid Integration Kit](https://firstlayerrobotics.com/shop) (RIK), which comes with two Pololu #4885 motors with MC1's connectors already fitted | You want to skip this job |
 
 ### Wiring
 
-Options A and B both use this wiring. The wire colours are Pololu's.
+Both options use this wiring. The wire colours are Pololu's.
 
 | Pololu wire | Function | MC1 connector | Pin |
 |---|---|---|---|
@@ -191,14 +190,6 @@ connectors. Each is 300 mm long, with tinned ends that you can cut to length.
 3. Slide a piece of heat-shrink sleeving onto each wire, then solder each motor wire to its matching
    kit wire using the table above.
 4. Slide the sleeving over each joint and shrink it, so no bare metal is showing.
-
-### Option C: Rapid Integration Kit
-
-The Rapid Integration Kit's two motors are the Pololu #4885 used in this guide, with MC1's connectors
-already fitted, so there is nothing to do here. Fit them in [step 5](#step-5-fit-the-motors), and use
-the settings in [step 14](#step-14-configure-mc1-for-frindo) as they are. The kit also includes the
-USB-C pigtail cable that powers the Raspberry Pi in step 15. It does not include MC1, so order that
-separately.
 
 ---
 
@@ -279,6 +270,9 @@ separate buckle, as in these photos, or a 200 mm pre-cut strap with a buckle.
 The strap fits through the two slots, with the free end and buckle on the underside of the robot.
 Once you are happy with the fit, remove the battery but leave the strap in place. This gives you
 access to the remaining recessed holes used in step 11.
+
+Any 3S (11.1 V) LiPo with an XT60 connector will work, as long as it is no bigger than
+150 x 50 x 28 mm. The pack in the photos is 132 x 43 x 25 mm.
 
 **You will need:** the battery pack and Velcro strap
 

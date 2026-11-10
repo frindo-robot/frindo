@@ -11,6 +11,7 @@ up the software and get the robot driving.
 - [Bill of materials](#bill-of-materials)
 - [Battery safety](#battery-safety)
 - [Motor connectors](#motor-connectors)
+- [Pi power cable](#pi-power-cable)
 - [Chassis build](#chassis-build)
 - [Power-up and configuration](#power-up-and-configuration)
 - [Adding a Raspberry Pi and camera](#adding-a-raspberry-pi-and-camera)
@@ -75,7 +76,7 @@ settings, and the `.3mf` files already contain them:
 | [Battery pack](https://www.amazon.co.uk/dp/B0928GTP85) (this build uses an 11.1 V, 5200 mAh LiPo with an XT60 connector). The largest pack that fits is 150 x 50 x 28 mm | 1 | 7 |
 | [Velcro strap, 20 to 25 mm wide](https://www.amazon.co.uk/dp/B0GGH11QQN?th=1): about 220 mm cut from a roll plus a buckle, or a 200 mm pre-cut strap with an integrated buckle | 1 | 7 |
 | [Motion Core MC1 PCB](https://firstlayerrobotics.com/shop), USB version. Comes with the JP1 jumper | 1 | 9 |
-| [Motion Core Cable Kit](https://firstlayerrobotics.com/shop): motor, encoder, E-stop/charger and aux 5 V cables. Its motor and encoder cables are option B in [Motor connectors](#motor-connectors) | 1 | 9 |
+| [Motion Core Cable Kit](https://firstlayerrobotics.com/shop): motor, encoder, E-stop/charger and aux 5 V cables. Its motor and encoder cables are option B in [Motor connectors](#motor-connectors), and its aux 5 V cable is option B in [Pi power cable](#pi-power-cable) | 1 | 9 |
 | [Motion Core Shorting Jumper Links (pair)](https://firstlayerrobotics.com/shop), for J2 and J3 if you are not fitting switches | 1 | 9 |
 | 3S LiPo balance charger | 1 | [Battery safety](#battery-safety) |
 | M3 x 8 mm screws | 16 | 3, 4, 5, 9 |
@@ -106,7 +107,7 @@ fastener supplier or as an assorted kit. Keep to the stated lengths.
 | M3 x 10 mm screws, M3 washers and M3 nuts, to fix the camera mount to the deck | 4 of each | 15 |
 | M2 x 10 mm screws, M2 washers and M2 nuts, to fix the camera module to its mount | 4 of each | 15 |
 | USB-C to USB data cable, between MC1 and the Pi 5 | 1 | 15 |
-| USB-C pigtail cable, to power the Pi from MC1 | 1 | 15 |
+| USB-C pigtail cable, to power the Pi from MC1. It needs a connector fitted to suit MC1: see [Pi power cable](#pi-power-cable) | 1 | 15 |
 
 ---
 
@@ -189,6 +190,47 @@ connectors. Each is 300 mm long, with tinned ends that you can cut to length.
    reach from the motor to MC1, as in [step 9](#step-9-fit-motion-core-mc1).
 3. Slide a piece of heat-shrink sleeving onto each wire, then solder each motor wire to its matching
    kit wire using the table above.
+4. Slide the sleeving over each joint and shrink it, so no bare metal is showing.
+
+## Pi power cable
+
+The Raspberry Pi 5 in step 15 runs from the robot's battery, powered from J4, MC1's 5 V auxiliary
+output. You need a USB-C pigtail for this: a short cable with a USB-C plug at one end and bare wires
+at the other. J4 is a 2-pin JST VH connector, so the bare end needs one fitted.
+
+There are two ways to do this, the same as for the motors.
+
+| Option | What you need | Best if |
+|---|---|---|
+| **A. Fit a new connector** | A 2-way JST VH housing (VHR-2N), two JST VH crimp terminals (SVH series), and a JST VH crimp tool | You already have the crimp tool |
+| **B. Solder on the Cable Kit** | The aux 5 V cable from the [Motion Core Cable Kit](https://firstlayerrobotics.com/shop), a soldering iron and heat-shrink sleeving | You can solder but have no crimp tools |
+
+### Wiring
+
+| Pigtail wire | Function | J4 pin |
+|---|---|---|
+| Red | +5 V | 1, marked **+** on the board |
+| Black | Ground | 2 |
+
+> [!CAUTION]
+> Get this the right way round. Reversing +5 V and ground can damage the Raspberry Pi. Check your
+> pigtail's own labelling, as not every maker uses red and black.
+
+### Option A: fit a new connector
+
+1. Strip each wire by the length JST specifies, and crimp on an SVH terminal using the JST VH crimp
+   tool.
+2. Push the red wire into pin 1 of the VHR-2N housing and the black wire into pin 2, until each one
+   clicks. Tug each wire gently to check that it is locked in.
+
+### Option B: solder on the Cable Kit
+
+1. Plug the Cable Kit's aux 5 V cable into J4 before you cut anything, and use the **+** marking on
+   the board to note which wire goes to pin 1.
+2. Cut the cable to length, leaving enough to reach from J4 to the Pi's USB-C socket, as in
+   [step 15](#step-15-fit-the-raspberry-pi-and-camera).
+3. Slide a piece of heat-shrink sleeving onto each wire, then solder the pigtail's red wire to the
+   pin 1 wire and its black wire to the pin 2 wire.
 4. Slide the sleeving over each joint and shrink it, so no bare metal is showing.
 
 ---
@@ -458,8 +500,8 @@ Keep the battery unplugged for this step.
 5. **Connect the USB data cable.** Pass it down through the large hole in the deck beside the Pi's
    USB ports. Plug the USB-C end into J7 on MC1, and the other end into one of the Pi's blue USB 3
    ports.
-6. **Connect the Pi's power.** Pass the USB-C power cable through the same hole, and connect it from
-   J4 (aux 5 V) on MC1 to the Pi's USB-C power socket. The Pi now runs from the robot's battery,
+6. **Connect the Pi's power.** Pass the USB-C pigtail (see [Pi power cable](#pi-power-cable)) through
+   the same hole, and connect it from J4 (aux 5 V) on MC1 to the Pi's USB-C power socket. The Pi now runs from the robot's battery,
    through MC1.
 
 **You will need:**
@@ -469,7 +511,7 @@ Keep the battery unplugged for this step.
 - For a Raspberry Pi or Pi Zero: 4x M3 x 10 mm screws, 4x M3 washers, 4x M3 nuts, 4x M2.5 x 5 mm screws
 - For the Pi camera mount: 4x M3 x 10 mm screws, 4x M3 washers, 4x M3 nuts, 4x M2 x 10 mm screws, 4x M2 washers, 4x M2 nuts
 - A USB-C to USB data cable, between MC1 and the Pi 5
-- A USB-C pigtail cable, to power the Pi from MC1
+- A USB-C pigtail cable with a JST VH connector fitted, to power the Pi from MC1 (see [Pi power cable](#pi-power-cable))
 
 [![Top view with the Raspberry Pi, camera cable and USB cables fitted](guide-images/thumbs/30.jpg)](guide-images/30.jpg) [![The complete robot from the side](guide-images/thumbs/31.jpg)](guide-images/31.jpg) [![Close-up of the camera and Raspberry Pi on the deck](guide-images/thumbs/32.jpg)](guide-images/32.jpg)
 

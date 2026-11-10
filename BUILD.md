@@ -106,8 +106,8 @@ fastener supplier or as an assorted kit. Keep to the stated lengths.
 | M2.5 x 5 mm screws, to fix the Pi or Pi Zero to its mount | 4 | 15 |
 | M3 x 10 mm screws, M3 washers and M3 nuts, to fix the camera mount to the deck | 4 of each | 15 |
 | M2 x 10 mm screws, M2 washers and M2 nuts, to fix the camera module to its mount | 4 of each | 15 |
-| USB-C to USB data cable, between MC1 and the Pi 5 | 1 | 15 |
-| USB-C pigtail cable, to power the Pi from MC1. It needs a connector fitted to suit MC1: see [Pi power cable](#pi-power-cable) | 1 | 15 |
+| [USB-C to USB data cable](https://www.amazon.co.uk/dp/B0DNZ21385?th=1), between MC1 and the Pi 5 | 1 | 15 |
+| [USB-C pigtail cable](https://www.amazon.co.uk/dp/B0HD71KN9W?th=1), to power the Pi from MC1. It needs a connector fitted to suit MC1: see [Pi power cable](#pi-power-cable) | 1 | 15 |
 
 ---
 
@@ -195,7 +195,7 @@ connectors. Each is 300 mm long, with tinned ends that you can cut to length.
 ## Pi power cable
 
 The Raspberry Pi 5 in step 15 runs from the robot's battery, powered from J4, MC1's 5 V auxiliary
-output. You need a USB-C pigtail for this: a short cable with a USB-C plug at one end and bare wires
+output. You need a [USB-C pigtail](https://www.amazon.co.uk/dp/B0HD71KN9W?th=1) for this: a short cable with a USB-C plug at one end and bare wires
 at the other. J4 is a 2-pin JST VH connector, so the bare end needs one fitted.
 
 There are two ways to do this, the same as for the motors.

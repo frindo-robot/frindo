@@ -181,7 +181,7 @@ crimp, and a loose motor terminal can cause intermittent faults that are hard to
 
 ### Option B: solder on the Cable Kit
 
-The Cable Kit has a motor cable and an encoder cable for each motor, already fitted with MC1's
+The Cable Kit has a pair of motor cables and a pair of encoder cables, already fitted with MC1's
 connectors. Each is 300 mm long, with tinned ends that you can cut to length.
 
 1. Plug the kit cables into MC1 before you cut anything, and use the pin numbers on the board to note
@@ -571,6 +571,7 @@ When you have finished, press Ctrl-C in both terminals and run `sudo shutdown no
 it to shut down before you switch off, because losing power during a write can corrupt the microSD
 card.
 
-> **Draft note, remove before release:** camera setup is not covered yet. The camera software needs
-> Raspberry Pi's own version of libcamera, and the scripts for it are not public yet. See
-> `pi_build_libcamera.sh` and `pi_camera_mjpeg.py` in the MC1 repo's `docs/examples`.
+### Camera software
+
+The camera is fitted in step 15, but this guide does not cover its software yet. The camera setup
+will follow in a later update.

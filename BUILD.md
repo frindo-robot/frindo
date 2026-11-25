@@ -25,6 +25,10 @@ Print time is about 8 hours for everything below, using roughly 310 g of PLA. Th
 take about 6 hours and 252 g. The STL files are in [`3D files`](3D%20files), with ready-made print
 sets in each folder's `.3mf` file.
 
+> **No 3D printer?** You can send the files to a print service to have the parts made, and some also
+> supply the other parts or a complete kit. See
+> [3D print services](README.md#3d-print-services).
+
 ### Chassis
 
 | Part | File | Qty | PLA each | Time each |
@@ -68,19 +72,34 @@ settings, and the `.3mf` files already contain them:
 
 ### Chassis
 
+The gearmotors, their cabling and the jumper links come **two ways** — as one kit, or as separate
+parts. Pick one route; you do not need both:
+
+- **Easy route:** the **[Rapid Integration Kit (RIK)](https://firstlayerrobotics.com/shop)** — the
+  two 12 V gearmotors with MC1's connectors already fitted, a pair of J2/J3 jumper links, the
+  MC1-to-Pi USB-C data cable and the MC1-to-Pi power cable. One kit covers the five rows marked
+  *(or use the RIK)*, here and in [Raspberry Pi and camera](#raspberry-pi-and-camera). It does not
+  include MC1.
+- **Source it yourself:** skip the RIK and buy those five rows individually.
+
+Everything else below is needed either way.
+
 | Item | Qty | Step |
 |---|---|---|
 | [50 mm OD, 40 mm ID O-ring](https://www.amazon.co.uk/dp/B0GSZ66ZXH?th=1) | 2 | 2 |
 | [Miniature ball castor](https://www.amazon.co.uk/dp/B0CQ721G26?th=1). Do not use the self-adhesive pads | 2 | 3 |
-| [12 V, 47:1 metal gearmotor with 48 CPR encoder](https://www.pololu.com/product/4885) (Pololu item #4885 or equivalent). Its connector needs changing to fit MC1: see [Motor connectors](#motor-connectors) | 2 | 5 |
+| [12 V, 47:1 metal gearmotor with 48 CPR encoder](https://www.pololu.com/product/4885) (Pololu item #4885 or equivalent). Its connector needs changing to fit MC1: see [Motor connectors](#motor-connectors). *(or use the RIK)* | 2 | 5 |
 | [Battery pack](https://www.amazon.co.uk/dp/B0928GTP85) (this build uses an 11.1 V, 5200 mAh LiPo with an XT60 connector). The largest pack that fits is 150 x 50 x 28 mm | 1 | 7 |
 | [Velcro strap, 20 to 25 mm wide](https://www.amazon.co.uk/dp/B0GGH11QQN?th=1): about 220 mm cut from a roll plus a buckle, or a 200 mm pre-cut strap with an integrated buckle | 1 | 7 |
 | [Motion Core MC1 PCB](https://firstlayerrobotics.com/shop), USB version. Comes with the JP1 jumper | 1 | 9 |
-| [Motion Core Cable Kit](https://firstlayerrobotics.com/shop): motor, encoder, E-stop/charger and aux 5 V cables. Its motor and encoder cables are option B in [Motor connectors](#motor-connectors), and its aux 5 V cable is option B in [Pi power cable](#pi-power-cable) | 1 | 9 |
-| [Motion Core Shorting Jumper Links (pair)](https://firstlayerrobotics.com/shop), for J2 and J3 if you are not fitting switches | 1 | 9 |
+| [Motion Core Cable Kit](https://firstlayerrobotics.com/shop): motor, encoder, E-stop/charger and aux 5 V cables. Its motor and encoder cables are option C in [Motor connectors](#motor-connectors), and its aux 5 V cable is option C in [Pi power cable](#pi-power-cable). *(or use the RIK)* | 1 | 9 |
+| [Motion Core Shorting Jumper Links (pair)](https://firstlayerrobotics.com/shop), for J2 and J3 if you are not fitting switches. *(or use the RIK)* | 1 | 9 |
 | 3S LiPo balance charger | 1 | [Battery safety](#battery-safety) |
 | M3 x 8 mm screws | 16 | 3, 4, 5, 9 |
 | M3 x 10 mm screws | 8 | 11, 12 |
+
+The complete [Frindo kit from 3D On Demand](https://3d-od.com/frindo/?utm_source=github&utm_medium=referral&utm_campaign=frindo-kits)
+goes further still: it includes all of this plus MC1 and the printed parts, made to order in the UK.
 
 The screws, nuts and washers in this guide are standard metric hardware, available from any good
 fastener supplier or as an assorted kit. Keep to the stated lengths.
@@ -106,8 +125,8 @@ fastener supplier or as an assorted kit. Keep to the stated lengths.
 | M2.5 x 5 mm screws, to fix the Pi or Pi Zero to its mount | 4 | 15 |
 | M3 x 10 mm screws, M3 washers and M3 nuts, to fix the camera mount to the deck | 4 of each | 15 |
 | M2 x 10 mm screws, M2 washers and M2 nuts, to fix the camera module to its mount | 4 of each | 15 |
-| [USB-C to USB data cable](https://www.amazon.co.uk/dp/B0DNZ21385?th=1), between MC1 and the Pi 5 | 1 | 15 |
-| [USB-C pigtail cable](https://www.amazon.co.uk/dp/B0HD71KN9W?th=1), to power the Pi from MC1. It needs a connector fitted to suit MC1: see [Pi power cable](#pi-power-cable) | 1 | 15 |
+| [USB-C to USB data cable](https://www.amazon.co.uk/dp/B0DNZ21385?th=1), between MC1 and the Pi 5. *(or use the RIK)* | 1 | 15 |
+| [USB-C pigtail cable](https://www.amazon.co.uk/dp/B0HD71KN9W?th=1), to power the Pi from MC1. It needs a connector fitted to suit MC1: see [Pi power cable](#pi-power-cable). *(or use the RIK)* | 1 | 15 |
 
 ---
 
@@ -173,8 +192,9 @@ inner-most set of recessed holes.
 ### Step 5: Fit the motors
 
 > [!NOTE]
-> **Before you start:** the motors need MC1's connectors fitted. If you have not done that yet, see
-> [Motor connectors](#motor-connectors) at the end of this guide.
+> **Before you start:** if you are using the Rapid Integration Kit, its motors arrive with MC1's
+> connectors already fitted, so there is nothing to do here. If not, the motors need MC1's
+> connectors fitted: see [Motor connectors](#motor-connectors) at the end of this guide.
 
 Fit the motors using two M3 x 8 mm screws per motor. Orient the motors so that the motor and encoder
 wires exit nearest the large pass-through hole in the chassis. Once they are fitted, pass the wires
@@ -259,7 +279,7 @@ noting the correct left/right orientation when viewed from above:
 > **Important:** with a link fitted to J3, the robot has no hardware E-stop. That is fine on the
 > bench, but fit a real normally-closed E-stop switch if the robot will be running near people.
 
-**You will need:** 1x Motion Core MC1 PCB, 4x M3 x 8 mm screws, the JP1 jumper supplied with MC1, and 2x links for J2 and J3 if you are not fitting switches
+**You will need:** 1x Motion Core MC1 PCB, 4x M3 x 8 mm screws, the JP1 jumper supplied with MC1, and a pair of jumper links for J2 and J3 if you are not fitting switches. These links bypass the charger-connected and E-stop inputs. The Rapid Integration Kit includes a pair, or use the Motion Core Shorting Jumper Links
 
 [![Motion Core MC1 fitted to the chassis with the motor and encoder cables connected](guide-images/thumbs/20.jpg)](guide-images/20.jpg) [![Close-up of MC1 with wire links fitted to the E-stop and charger connectors](guide-images/thumbs/21.jpg)](guide-images/21.jpg)
 
@@ -375,8 +395,10 @@ complete ROS 2 based teleoperated robot.
 ### Step 15: Fit the Raspberry Pi and camera
 
 > [!NOTE]
-> **Before you start:** the USB-C pigtail that powers the Pi needs a connector fitted to suit MC1.
-> If you have not done that yet, see [Pi power cable](#pi-power-cable) at the end of this guide.
+> **Before you start:** if you are using the Rapid Integration Kit, its MC1-to-Pi power cable
+> already has the right connector fitted, so there is nothing to do here. If not, the USB-C pigtail
+> that powers the Pi needs a connector fitted to suit MC1: see [Pi power cable](#pi-power-cable) at
+> the end of this guide.
 
 Keep the battery unplugged for this step.
 
@@ -409,8 +431,8 @@ Keep the battery unplugged for this step.
 - A Raspberry Pi Camera Module 3 Wide and a 200 mm Raspberry Pi 5 camera adapter cable
 - For a Raspberry Pi or Pi Zero: 4x M3 x 10 mm screws, 4x M3 washers, 4x M3 nuts, 4x M2.5 x 5 mm screws
 - For the Pi camera mount: 4x M3 x 10 mm screws, 4x M3 washers, 4x M3 nuts, 4x M2 x 10 mm screws, 4x M2 washers, 4x M2 nuts
-- A USB-C to USB data cable, between MC1 and the Pi 5
-- A USB-C pigtail cable with a JST VH connector fitted, to power the Pi from MC1 (see [Pi power cable](#pi-power-cable))
+- A USB-C to USB data cable, between MC1 and the Pi 5 (in the Rapid Integration Kit, or buy your own)
+- The Rapid Integration Kit's MC1-to-Pi power cable, or a USB-C pigtail cable with a JST VH connector fitted, to power the Pi from MC1 (see [Pi power cable](#pi-power-cable))
 
 [![Top view with the Raspberry Pi, camera cable and USB cables fitted](guide-images/thumbs/30.jpg)](guide-images/30.jpg) [![The complete robot from the side](guide-images/thumbs/31.jpg)](guide-images/31.jpg) [![Close-up of the camera and Raspberry Pi on the deck](guide-images/thumbs/32.jpg)](guide-images/32.jpg)
 
@@ -485,16 +507,19 @@ MC1 needs two connectors on each motor:
 - **Motor power:** a 2-pin Molex Mini-Fit Jr., for J9 (left) or J11 (right)
 - **Encoder:** a 5-pin JST XH, for J8 (left) or J10 (right)
 
-Do this before [step 5](#step-5-fit-the-motors). There are two ways to do it.
+If your motors came from the Rapid Integration Kit, their connectors are already fitted, so you can
+go straight to [step 5](#step-5-fit-the-motors). Otherwise, do this before step 5. There are three
+ways to do it.
 
 | Option | What you need | Best if |
 |---|---|---|
-| **A. Fit new connectors** | Mini-Fit Jr. and JST XH housings and crimp terminals, and the right crimp tool for each | You already have the crimp tools |
-| **B. Solder on the Cable Kit** | A [Motion Core Cable Kit](https://firstlayerrobotics.com/shop), a soldering iron and heat-shrink sleeving | You can solder but have no crimp tools |
+| **A. Use the Rapid Integration Kit** | The [Rapid Integration Kit](https://firstlayerrobotics.com/shop): its motors arrive with MC1's connectors already fitted | You want the motors ready to plug in, with no crimping or soldering |
+| **B. Fit new connectors** | Mini-Fit Jr. and JST XH housings and crimp terminals, and the right crimp tool for each | You already have the crimp tools |
+| **C. Solder on the Cable Kit** | A [Motion Core Cable Kit](https://firstlayerrobotics.com/shop), a soldering iron and heat-shrink sleeving | You can solder but have no crimp tools |
 
 ### Wiring
 
-Both options use this wiring. The wire colours are Pololu's.
+Options B and C use this wiring. The wire colours are Pololu's.
 
 If you use a motor from another maker, check its wiring against this table before you start. Other
 makers may use the same colours for different signals.
@@ -516,7 +541,12 @@ Do not worry about getting a motor or encoder "backwards". Each motor's directio
 its encoder counts, are set in software in [step 14](#step-14-configure-mc1-for-frindo), so you never
 need to rewire to fix a direction.
 
-### Option A: fit new connectors
+### Option A: use the Rapid Integration Kit
+
+The kit's motors already have MC1's motor and encoder connectors fitted. There is nothing to wire —
+go straight to [step 5](#step-5-fit-the-motors).
+
+### Option B: fit new connectors
 
 1. Cut the 0.1″ header off, leaving as much wire as you can.
 2. Strip each wire by the length the terminal maker specifies, and crimp on a terminal. Use
@@ -530,7 +560,7 @@ need to rewire to fix a direction.
 Crimp the terminals with the proper tool for each connector family. Pliers do not make a reliable
 crimp, and a loose motor terminal can cause intermittent faults that are hard to trace.
 
-### Option B: solder on the Cable Kit
+### Option C: solder on the Cable Kit
 
 The Cable Kit has a pair of motor cables and a pair of encoder cables, already fitted with MC1's
 connectors. Each is 300 mm long, with tinned ends that you can cut to length. The kit's wires use
@@ -547,15 +577,17 @@ the same colours as the Pololu motor's, so you join each wire to the one of the 
 ## Pi power cable
 
 The Raspberry Pi 5 in step 15 runs from the robot's battery, powered from J4, MC1's 5 V auxiliary
-output. You need a [USB-C pigtail](https://www.amazon.co.uk/dp/B0HD71KN9W?th=1) for this: a short cable with a USB-C plug at one end and bare wires
-at the other. J4 is a 2-pin JST VH connector, so the bare end needs one fitted.
+output. The Rapid Integration Kit includes this cable ready-made (option A). Otherwise you need a
+[USB-C pigtail](https://www.amazon.co.uk/dp/B0HD71KN9W?th=1): a short cable with a USB-C plug at one
+end and bare wires at the other. J4 is a 2-pin JST VH connector, so the bare end needs one fitted.
 
-There are two ways to do this, the same as for the motors.
+There are three ways to do this, the same as for the motors.
 
 | Option | What you need | Best if |
 |---|---|---|
-| **A. Fit a new connector** | A 2-way JST VH housing (VHR-2N), two JST VH crimp terminals (SVH series), and a JST VH crimp tool | You already have the crimp tool |
-| **B. Solder on the Cable Kit** | The aux 5 V cable from the [Motion Core Cable Kit](https://firstlayerrobotics.com/shop), a soldering iron and heat-shrink sleeving | You can solder but have no crimp tools |
+| **A. Use the Rapid Integration Kit** | The [Rapid Integration Kit](https://firstlayerrobotics.com/shop): it includes a ready-made MC1-to-Pi power cable | You want the cable ready to use, with no crimping or soldering |
+| **B. Fit a new connector** | A 2-way JST VH housing (VHR-2N), two JST VH crimp terminals (SVH series), and a JST VH crimp tool | You already have the crimp tool |
+| **C. Solder on the Cable Kit** | The aux 5 V cable from the [Motion Core Cable Kit](https://firstlayerrobotics.com/shop), a soldering iron and heat-shrink sleeving | You can solder but have no crimp tools |
 
 ### Wiring
 
@@ -568,14 +600,19 @@ There are two ways to do this, the same as for the motors.
 > Get this the right way round. Reversing +5 V and ground can damage the Raspberry Pi. Check your
 > pigtail's own labelling, as not every maker uses red and black.
 
-### Option A: fit a new connector
+### Option A: use the Rapid Integration Kit
+
+The kit's MC1-to-Pi power cable is ready to use: plug it into J4 and the Pi's USB-C socket. There is
+nothing to make. Mind the polarity warning above.
+
+### Option B: fit a new connector
 
 1. Strip each wire by the length JST specifies, and crimp on an SVH terminal using the JST VH crimp
    tool.
 2. Push the red wire into pin 1 of the VHR-2N housing and the black wire into pin 2, until each one
    clicks. Tug each wire gently to check that it is locked in.
 
-### Option B: solder on the Cable Kit
+### Option C: solder on the Cable Kit
 
 1. Plug the Cable Kit's aux 5 V cable into J4 before you cut anything, and use the **+** marking on
    the board to note which wire goes to pin 1.

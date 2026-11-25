@@ -16,9 +16,17 @@ limiting and encoder odometry for you.
 - [Bill of materials](BUILD.md#bill-of-materials)
 - [3D print files](3D%20files): STL files, plus ready-made print sets in `.3mf`
 
+## No printer?
+
+The design is free to print yourself. If you don't have a 3D printer, you can send the files to a
+print service, which prints the parts and posts them to you. Some also supply the other parts, or a
+complete kit with Motion Core MC1, so you don't have to source everything yourself. See
+[3D print services](#3d-print-services) below.
+
 ## What you need
 
 - A desktop 3D printer. Everything prints in about 8 hours, using roughly 310 g of PLA.
+  No printer? [Use a print service](#no-printer).
 - A [Motion Core MC1](https://firstlayerrobotics.com/motion-core) motor controller
 - Two 12 V gearmotors with encoders, and a 3S LiPo battery
 - A Raspberry Pi 5 and camera, for the robot in the build guide. The deck can carry other electronics.
@@ -32,6 +40,15 @@ Frindo sends velocity commands to MC1 and gets odometry back, over the open
   [Getting Started guide for ROS 2](https://firstlayerrobotics.com/Motion_Core_Getting_Started_ROS2_Rev_C.pdf)
 - **Python:** [`orcp-python`](https://github.com/orcp-protocol/orcp-python) and the
   [Getting Started guide for Python](https://firstlayerrobotics.com/Motion_Core_Getting_Started_Python_Rev_C.pdf)
+
+## 3D print services
+
+Services that make the Frindo parts to order. To list one here, email
+[hello@frindo.org](mailto:hello@frindo.org).
+
+| Service | Website | Country | 3D parts | Kits |
+|---|---|---|:-:|:-:|
+| 3D On Demand | [3d-od.com/frindo](https://3d-od.com/frindo/?utm_source=github&utm_medium=referral&utm_campaign=frindo-kits) | United Kingdom | ✓ | ✓ |
 
 ## Licence
 

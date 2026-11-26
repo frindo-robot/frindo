@@ -98,9 +98,6 @@ Everything else below is needed either way.
 | M3 x 8 mm screws | 16 | 3, 4, 5, 9 |
 | M3 x 10 mm screws | 8 | 11, 12 |
 
-The complete [Frindo kit from 3D On Demand](https://3d-od.com/frindo/?utm_source=github&utm_medium=referral&utm_campaign=frindo-kits)
-goes further still: it includes all of this plus MC1 and the printed parts, made to order in the UK.
-
 The screws, nuts and washers in this guide are standard metric hardware, available from any good
 fastener supplier or as an assorted kit. Keep to the stated lengths.
 
